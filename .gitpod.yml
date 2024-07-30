@@ -1,10 +1,11 @@
 tasks:
   - init: |
       sudo apt-get update
-      sudo apt-get install -y openssh-server
+      sudo apt-get install -y openssh-server openssl
       sudo apt-get install -y npm
       sudo npm install -g wstunnel
       ./setup-ssh.sh
+      ./create-user.sh
   - command: |
       sudo service ssh start
       wstunnel -s 0.0.0.0:80 &

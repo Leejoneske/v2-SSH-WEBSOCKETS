@@ -4,6 +4,7 @@ tasks:
       sudo apt-get install -y openssh-server
       sudo apt-get install -y npm
       sudo npm install -g wstunnel
+      ./setup-ssh.sh
   - command: |
       sudo service ssh start
       wstunnel -s 0.0.0.0:80 &

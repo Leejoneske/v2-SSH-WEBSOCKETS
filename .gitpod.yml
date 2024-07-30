@@ -1,14 +1,12 @@
-image:
-  file: .gitpod.Dockerfile
-
 tasks:
-  - init: npm install
-    command: node server.js
-
+  - init: |
+      sudo apt-get update
+      sudo apt-get install -y openssh-server
+      sudo apt-get install -y npm
+      sudo npm install -g wstunnel
+  - command: |
+      sudo service ssh start
+      wstunnel -s 0.0.0.0:80 &
 ports:
-  - port: 8080
+  - port: 80
     onOpen: open-preview
-
-vscode:
-  extensions:
-    - dbaeumer.vscode-eslint
